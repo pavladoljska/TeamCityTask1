@@ -21,6 +21,7 @@ public class GitDiff {
             String mergeBase = GitDiff.getMergeBase(owner, repo, accessToken, branchA, branchB);
             Set<String> changesA = GitDiff.getChangesA(owner, repo, branchA, mergeBase, accessToken);
             ArrayList<String> changesB = GitDiff.executeCLI(branchB, mergeBase, localRepoPath);
+
             ArrayList<String> output = new ArrayList<>();
             for (String file : changesB) {
                 if (changesA.contains(file)) {
@@ -32,6 +33,8 @@ public class GitDiff {
         catch (IOException e) { System.out.println(e.getMessage()); return null; }
 
     }
+
+    //function to get merge base from remote repository
     public static String getMergeBase(String owner, String repo, String accessToken, String branchA, String branchB) throws IOException {
 
         String url = "https://api.github.com/repos/" + owner + "/" + repo + "/compare/" + branchA + "..." + branchB;
@@ -54,6 +57,8 @@ public class GitDiff {
             return null;
         }
     }
+
+    // Function returns set of changed files from remote branch
     public static Set<String> getChangesA(String owner, String repo, String branchA, String mergeBase, String accessToken) throws IOException {
 
         String url = "https://api.github.com/repos/" + owner + "/" + repo + "/compare/" + mergeBase + "..." + branchA;
@@ -78,8 +83,9 @@ public class GitDiff {
 
         return changedFiles;
     }
-    public static ArrayList<String> executeCLI(String branchB, String mergeBase, String localRepoPath) throws IOException {
 
+    //Finds changed files in local branch via CLI commands for specific OS
+    public static ArrayList<String> executeCLI(String branchB, String mergeBase, String localRepoPath) throws IOException {
 
         ArrayList<String> command = new ArrayList<>();
 
