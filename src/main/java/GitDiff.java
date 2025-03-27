@@ -120,9 +120,9 @@ public class GitDiff {
     public static void main(String[] args)
     {
         String owner = "pavladoljska";
-        String repo = "test-repo";
-        String accessToken = "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";
-        String localRepoPath = "C:\\Users\\pavla\\OneDrive\\Desktop\\test-repo"; //"/c/Users/pavla/OneDrive/Desktop/test-repo";
+        String repo = "test-repo1";
+        String accessToken = "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";//"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";
+        String localRepoPath = "C:\\Users\\pavla\\OneDrive\\Desktop\\test-repo2"; //"/c/Users/pavla/OneDrive/Desktop/test-repo";
         String branchA = "branchA";
         String branchB = "branchB";
 
